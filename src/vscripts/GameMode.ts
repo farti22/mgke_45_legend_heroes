@@ -4,7 +4,7 @@ import { modifier_panic } from "./modifiers/modifier_panic";
 const heroSelectionTime = 20;
 
 declare global {
-    interface CDOTAGamerules {
+    interface CDOTAGameRules {
         Addon: GameMode;
     }
 }
@@ -63,7 +63,7 @@ export class GameMode {
             for (let i = 0; i < 4; i++) {
                 Tutorial.AddBot("npc_dota_hero_lina", "", "", false);
             }
-        }
+        } 
 
         if (state === GameState.CUSTOM_GAME_SETUP) {
             // Automatically skip setup in tools
