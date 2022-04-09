@@ -7,8 +7,8 @@
         "Ability1"              "sysko_dolzen"
         "Ability2"              "bounty_hunter_jinada"
         "Ability3"              "sysko_run"
-        "Ability4"              "sysko_syma"
-        "Ability5"              ""
+        "Ability4"              "meepo_earthbind_ts_example"
+        "Ability5"              "meepo_earthbind_ts_example"
         "Ability6"              ""
         "Ability10"             "special_bonus_cast_range_200"
         "Ability11"             "special_bonus_cooldown_reduction_15"
@@ -18,7 +18,7 @@
         "Ability15"             "special_bonus_attack_damage_50"
         "Ability16"             "special_bonus_attack_speed_70"
         "Ability17"             "special_bonus_all_stats_20"
-        "StatusHealth" "300"
+        
     }
     // Паша Линкевич
     "npc_dota_hero_tiny"

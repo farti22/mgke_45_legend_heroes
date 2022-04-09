@@ -60,7 +60,7 @@ export class GameMode {
 
         // Add 4 bots to lobby in tools
         if (IsInToolsMode() && state == GameState.CUSTOM_GAME_SETUP) {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 1; i++) {
                 Tutorial.AddBot("npc_dota_hero_lina", "", "", false);
             }
         } 
@@ -100,7 +100,7 @@ export class GameMode {
         if (unit.IsRealHero()) {
             if (!unit.HasAbility("meepo_earthbind_ts_example")) {
                 // Add lua ability to the unit
-                unit.AddAbility("meepo_earthbind_ts_example");
+                //unit.AddAbility("meepo_earthbind_ts_example");
             }
         }
     }

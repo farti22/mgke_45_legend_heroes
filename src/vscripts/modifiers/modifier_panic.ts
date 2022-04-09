@@ -14,8 +14,9 @@ class ModifierSpeed extends BaseModifier {
 
 @registerModifier()
 export class modifier_panic extends ModifierSpeed {
+    particle?: ParticleID;
     // Set state
-    CheckState(): Partial<Record<modifierstate, boolean>> {
+    CheckState(): Partial<Record<ModifierState, boolean>> {
         return {
             [ModifierState.COMMAND_RESTRICTED]: true,
         };
@@ -23,17 +24,25 @@ export class modifier_panic extends ModifierSpeed {
 
     // Override speed given by Modifier_Speed
     GetModifierMoveSpeed_Absolute(): number {
-        return 540;
+        return 340;
     }
 
     // Run when modifier instance is created
     OnCreated(): void {
         if (IsServer()) {
             // Think every 0.3 seconds
+            const parent = this.GetParent();
+            this.particle = ParticleManager.CreateParticle("particles/units/heroes/hero_viper/viper_nethertoxin_debuff.vpcf", ParticleAttachment.ABSORIGIN_FOLLOW, parent);
+
             this.StartIntervalThink(0.3);
         }
     }
-
+    OnDestroy(): void {
+        if (IsServer()) {
+            if (this.particle)
+                ParticleManager.DestroyParticle(this.particle, true);
+        }
+    }
     // Called when intervalThink is triggered
     OnIntervalThink(): void {
         const parent = this.GetParent();

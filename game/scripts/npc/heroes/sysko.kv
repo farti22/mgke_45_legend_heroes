@@ -1,0 +1,277 @@
+"DOTAAbilities"
+{
+//------------------------------------------------
+//---------------[ALEXEY SYSKO]-------------------
+//------------------------------------------------
+
+//---------------------------- 1 skill Sysko
+  "sysko_dolzen"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"           "ability_lua"
+    "ScriptFile"          "abilities/heroes/sysko/sysko_dolzen.lua"
+    "AbilityTextureName"      "sysko_dolzen"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+    "AbilityUnitDamageType"     "DAMAGE_TYPE_PURE"
+
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"        "1100 1300 1500"
+    "AbilityCastPoint"        "0.3"
+    "AbilityCooldown"       "15 14 13 12"
+    "AbilityManaCost"       "110"
+    "AbilityModifierSupportValue" "0.0" // All about the damage
+  
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "03"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "slow"            "20 50 80 120"
+      }
+      "04"
+      {
+        "var_type"          "FIELD_FLOAT"
+        "duration"          "1 2 3 4"
+        "LinkedSpecialBonus"    "special_bonus_shade_1"
+      }
+    }
+    
+    "precache"
+      {
+      "soundfile" "soundevents/hero_shade.vsndevts"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
+      "particle" "particles\units\heroes\hero_night_stalker\nightstalker_ulti.vpcf"
+      "particle" "particles/units/heroes/hero_bounty_hunter/bounty_hunter_jinda_slow.vpcf"
+      "particle" "particles/units/heroes/hero_shade/stalk.vpcf"
+      "particle" "particles/units/heroes/hero_shade/stalk_unit.vpcf"
+      "particle" "particles/units/heroes/hero_shade/stalk_attack.vpcf"
+      "particle" "particles/units/heroes/hero_shade/isolation_debuff.vpcf"
+      "particle" "particles/units/heroes/hero_shade/precast_isolation.vpcf"
+      "particle" "particles\items_fx\ethereal_blade.vpcf"
+      }
+  }
+ 
+// ---------------------------- 2 skill Sysko
+  "bounty_hunter_jinada"
+  {
+    "ID"              "5286"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "SpellDispellableType"      "SPELL_DISPELLABLE_YES"
+    "AbilitySound"          "Hero_BountyHunter.Jinada"
+    "AbilityCooldown"       "12 9 6 2"
+    "AbilityTextureName"    "sysko_gde"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "bonus_damage"      "20 50 80 100"
+      }
+      "02"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "gold_steal"      "100 200 350 500"
+        "LinkedSpecialBonus"    "special_bonus_unique_bounty_hunter"
+      }
+    }
+    "AbilityCastAnimation"    "ACT_DOTA_CAST_ABILITY_2"
+  }
+//---------------------------- 3 skill Sysko
+  "sysko_run"
+  {
+    "BaseClass"           "ability_datadriven"
+    "AbilityTextureName"      "sysko_run"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "MaxLevel"            "4"
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "bonus_speed"       "45 70 150 1220"
+      }
+    }
+    "Modifiers"
+    {
+      "modifier_sysko_run"
+      {
+        "Passive" "1"
+        "IsHidden"  "0"
+        //"Duration"  "%duration"
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE" "%bonus_speed"
+        }
+      }
+    }
+  }
+//-----------------------------Sysko Ulta
+  "sysko_syma"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"           "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityType"         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+    "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+    "AbilityTextureName"      "sysko_syma"
+
+    "AbilityCooldown"       "120 60 30"
+    "AbilityManaCost"       "150 200 400"
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "soundfile"   "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+      "particle"    "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track.vpcf"
+      "particle"    "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_trail.vpcf"
+      "particle"    "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_haste.vpcf"
+      "particle"    "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
+      "particle"    "particles/items2_fx/hand_of_midas.vpcf"
+      "soundfile"   "soundevents/game_sounds_rabbi.vsndevts"
+    }  
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "aura_radius"     "300 500 1000"
+        "LinkedSpecialBonus"      "special_bonus_unique_rabbi"
+      }
+      "02"
+      {
+        "var_type"        "FIELD_FLOAT"
+        "tick_steal"      "0.5 0.5 0.5"
+      }
+      "03"
+      {
+        "var_type"        "FIELD_FLOAT"
+        "duration"        "8.5 11.5 15.5"
+      }
+      "04"
+      {
+        "var_type"        "FIELD_FLOAT"
+        "gold_steal"      "20.0 30.0 40.0"  // exemple : 15*20 = 300 gold max ; max 20*60 = 1200
+      }
+      "05"
+      {
+        "var_type"        "FIELD_FLOAT"
+        "gold_steal_en"     "-25.0 -50.0 -75.0"  // exemple : 15*20 = 300 gold max ; max 20*60 = 1200
+      }
+      "06"
+      {
+        "var_type"        "FIELD_FLOAT"
+        "gold_dead"       "250 350 450"  // exemple : 15*20 = 300 gold max ; max 20*60 = 1200
+      }
+    }
+
+    "OnSpellStart"
+    {
+      "ApplyModifier"
+      {
+        "Target"
+        {
+          "Center"          "CASTER"
+          "Radius"        "GLOBAL"
+          "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"         "DOTA_UNIT_TARGET_HERO" 
+        }
+        "ModifierName"    "modifier_sysko_syma"
+      }
+
+      "ApplyModifier"
+      {
+        "ModifierName"  "modifier_track_steal"
+        "Target"    "CASTER"
+      }
+      
+      "FireSound"
+      {
+        "EffectName"  "Hero_BountyHunter.Target"
+        "Target"    "TARGET"
+      }
+      "FireSound"
+      {
+        "EffectName"  "jew.money"
+        "Target"    "CASTER"
+      }
+    }
+
+    "Modifiers"
+    {
+      "modifier_sysko_syma"
+      {
+        "Duration"  "%duration"
+        "IsHidden"  "1"
+
+        "OnCreated"
+        {
+          "AttachEffect"
+          {
+            "EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_trail.vpcf"
+            "EffectAttachType"  "follow_origin"
+            "Target"            "TARGET"
+
+            "ControlPointEntities"
+            {
+              "TARGET"  "attach_origin"
+              "TARGET"  "attach_hitloc"
+            }
+          }
+
+          "AttachEffect"
+          {
+            "EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
+            "EffectAttachType"  "follow_overhead"
+            "Target"            "TARGET"
+          }
+        }
+
+        "OnDestroy"
+        {
+          "RunScript"
+          {
+            "ScriptFile"  "lua/abilities/sysko/sysko_syma_funcs.lua"
+            "Function"    "Track"
+            "Target"
+            {
+              "Center"  "TARGET"
+              "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_DEAD"
+            }
+          }
+        }
+      }
+
+      "modifier_track_steal"
+      {
+        "Duration"  "%duration"
+        "IsHidden"  "1"
+        "ThinkInterval"  "0.5"
+        "OnIntervalThink"
+        {
+          "RunScript"
+          {
+            "ScriptFile"  "lua/abilities/sysko/sysko_syma_funcs.lua"
+            "Function"    "track_in_radius"
+          }
+        }
+      }
+    }
+  }
+}
